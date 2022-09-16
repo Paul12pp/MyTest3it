@@ -1,16 +1,22 @@
 import * as React from 'react';
-import {Text, View} from 'react-native';
+import {SafeAreaView, ScrollView, Text, View} from 'react-native';
 import {styles} from './style';
-import {StackScreenProps} from '@react-navigation/stack';
+// import {StackScreenProps} from '@react-navigation/stack';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../App/type';
+import {styles as common} from '../../styles/common';
 
-interface Props extends StackScreenProps<RootStackParamList, 'Home'> {}
+interface Props extends NativeStackScreenProps<RootStackParamList, 'Home'> {}
 
 const Home = ({}: Props) => {
   return (
-    <View style={styles.container}>
-      <Text>Home</Text>
-    </View>
+    <SafeAreaView style={common.container}>
+      <ScrollView
+        contentContainerStyle={common.scrollWrapper}
+        showsVerticalScrollIndicator={false}>
+        <Text>Home</Text>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 

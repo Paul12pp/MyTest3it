@@ -1,0 +1,26 @@
+export const colors = {
+  primary: '#2d1e72',
+  secondary: '#ab5dec',
+  green: '#00ff99',
+  blue: '#337ab7',
+  blueLight: '#00bcd4',
+  blueDark: '#2e6da4',
+  carbon: '#253D52',
+  white: '#ffffff',
+  black: '#000000',
+  danger: '#a94442',
+  jet: '#333333',
+  orange: '#ffd65e',
+  golden: '#d7a307',
+  neutral: {
+    feel: '#050709',
+    neutral0: '#FFFFFF', //'#FFFFFF',
+    neutral50: '#F6F6F6', //'#FFFFFF',
+    neutral100: '#E9EBEC', //TO DO Delete color
+    neutral200: '#E2E2E2',
+    neutral400: '#ADADAD', //'#A1A2A4',
+    neutral600: '#545454', //'#585A5B',
+    neutral900: '#141414', //'#050709',
+    neutralc4: '#C4C4C4',
+  },
+};
