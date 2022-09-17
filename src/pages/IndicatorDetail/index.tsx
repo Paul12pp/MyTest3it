@@ -1,5 +1,5 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {ActivityIndicator, SafeAreaView, ScrollView, View} from 'react-native';
 import {RootStackParamList} from '../App/type';
 import {styles} from './style';
@@ -8,6 +8,8 @@ import {styles as common} from '../../styles/common';
 import useIndicatorType from '../../hooks/dispatch/useIndicatorType';
 import {Typography} from '../../components/Typography';
 import moment from 'moment';
+import {VictoryChart, VictoryLine, VictoryTheme} from 'victory-native';
+import {Serie} from '../../redux/types/indicatorType';
 
 interface Props
   extends NativeStackScreenProps<RootStackParamList, 'IndicatorDetail'> {}
@@ -15,6 +17,19 @@ interface Props
 const IndicatorDetail = ({route}: Props) => {
   const {codigo} = route.params;
   const {get, indicatorTypeData} = useIndicatorType();
+  const [data, setData] = useState<Serie[] | []>([]);
+  useEffect(() => {
+    if (indicatorTypeData.serie.length > 0) {
+      const slicedArray = indicatorTypeData.serie.slice(0, 10);
+      const temp = slicedArray.map(r => {
+        return {
+          valor: r.valor,
+          fecha: moment(r.fecha).format('YYYY-MM-DD'),
+        };
+      });
+      setData(temp);
+    }
+  }, [indicatorTypeData]);
   useEffect(() => {
     get(codigo);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -62,6 +77,18 @@ const IndicatorDetail = ({route}: Props) => {
                 </Typography>
               </View>
             </View>
+            <VictoryChart
+              domainPadding={10}
+              width={350}
+              height={350}
+              theme={VictoryTheme.material}>
+              <VictoryLine
+                labels={({datum}) => datum.valor}
+                data={data}
+                x={'fecha'}
+                y="valor"
+              />
+            </VictoryChart>
           </>
         )}
       </ScrollView>
