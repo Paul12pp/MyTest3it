@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {View} from 'react-native';
 import {SeparatorLine} from '../SeparatorLine';
 import {Typography} from '../Typography';
@@ -22,4 +22,4 @@ const CardValue = ({item}: CardValueProps) => {
   );
 };
 
-export default CardValue;
+export default memo(CardValue);
