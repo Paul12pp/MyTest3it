@@ -10,7 +10,10 @@ import {CardIndicatorProps} from './type';
 const CardIndicator = ({item, onPress, onPressInfo}: CardIndicatorProps) => {
   // console.log(item);
   return (
-    <TouchableOpacity style={styles.container} onPress={onPress}>
+    <TouchableOpacity
+      testID={'card-test'}
+      style={styles.container}
+      onPress={onPress}>
       <View style={styles.subContainer}>
         <View>
           <Typography style={styles.title} variant={{type: 'body1'}}>
@@ -24,17 +27,19 @@ const CardIndicator = ({item, onPress, onPressInfo}: CardIndicatorProps) => {
           <Icon
             name={'information-circle-outline'}
             size={24}
+            testID={'info-icon'}
             color={colors.primary}
             onPress={onPressInfo}
           />
           <Icon
             name={'chevron-forward-outline'}
             size={24}
+            testID={'arrow-icon'}
             color={colors.neutral.neutral400}
           />
         </View>
       </View>
-      <SeparatorLine />
+      <SeparatorLine testID={'separator-line'} />
     </TouchableOpacity>
   );
 };

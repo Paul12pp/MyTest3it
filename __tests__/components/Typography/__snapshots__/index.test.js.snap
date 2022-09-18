@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The Typography component should render correctly 1`] = `
+<Text
+  numberOfLines={0}
+  style={
+    Object {
+      "fontSize": 20,
+    }
+  }
+  testID="typography-test"
+/>
+`;
+
+exports[`The Typography component should render correctly with children 1`] = `
+<Text
+  numberOfLines={0}
+  style={
+    Object {
+      "fontSize": 20,
+    }
+  }
+  testID="typography-test"
+>
+  Hello World!
+</Text>
+`;

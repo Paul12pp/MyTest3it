@@ -24,12 +24,17 @@ const Indicator = ({route}: Props) => {
       <ScrollView
         contentContainerStyle={common.scrollWrapper}
         showsVerticalScrollIndicator={false}>
-        <ActivityIndicator animating={indicatorTypeData.loading} />
+        {indicatorTypeData.loading && (
+          <ActivityIndicator
+            testID={'loading-test'}
+            animating={indicatorTypeData.loading}
+          />
+        )}
         {indicatorTypeData.error && (
           <Typography>Ha ocurrido un error</Typography>
         )}
         {indicatorTypeData.serie.length > 0 && (
-          <View>
+          <View testID={'list-data'}>
             {indicatorTypeData.serie.map((item, index) => {
               return <CardValue key={index} item={item} />;
             })}

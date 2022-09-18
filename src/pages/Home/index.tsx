@@ -34,7 +34,10 @@ const Home = ({navigation}: Props) => {
       <ScrollView
         contentContainerStyle={common.scrollWrapper}
         showsVerticalScrollIndicator={false}>
-        <ActivityIndicator animating={indicatorData.loading} />
+        <ActivityIndicator
+          testID={'loading-test'}
+          animating={indicatorData.loading}
+        />
         {indicatorData.error && <Typography>Ha ocurrido un error</Typography>}
         {indicatorData.data.length > 0 && (
           <View>

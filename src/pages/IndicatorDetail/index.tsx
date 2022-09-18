@@ -41,12 +41,15 @@ const IndicatorDetail = ({route}: Props) => {
         showsVerticalScrollIndicator={false}>
         {/* <Typography>{JSON.stringify(indicatorTypeData.serie)}</Typography> */}
         {indicatorTypeData.loading && (
-          <ActivityIndicator animating={indicatorTypeData.loading} />
+          <ActivityIndicator
+            testID={'loading-test'}
+            animating={indicatorTypeData.loading}
+          />
         )}
         {indicatorTypeData.error && (
           <Typography>Ha ocurrido un error</Typography>
         )}
-        {!indicatorTypeData.loading && (
+        {indicatorTypeData.serie.length > 0 && (
           <>
             <Typography variant={{type: 'large'}} style={styles.value}>
               $ {indicatorTypeData.serie[0].valor}
